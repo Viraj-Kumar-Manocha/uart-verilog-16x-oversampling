@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 20.06.2026 03:13:18
-// Design Name: 
-// Module Name: uart_rx
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module uart_rx(input clk,
                input rst,
@@ -40,7 +20,7 @@ reg [7:0] data_reg;
 
 reg [3:0] tick_count;
 
-reg rx_d;                                 //this part is importtant for loopback
+reg rx_d;                                 //this part is important for loopback
 wire start_edge;                          //it detects the start edge of transmission and not just any zero
 always @(posedge clk) begin
     rx_d <= rx;
