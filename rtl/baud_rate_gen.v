@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 19.06.2026 00:34:28
-// Design Name: 
-// Module Name: baud_rate_gen
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module baud_rate_gen #(parameter CLKS_PER_BIT = 5208) //clks per bit = clk freq./baud rate
                       (input clk,                     //assuming 50 MHZ and 9600 baud rate  
