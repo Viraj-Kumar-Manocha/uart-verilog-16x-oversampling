@@ -205,8 +205,8 @@ Elaborated schematics generated in Vivado (RTL Analysis → Open Elaborated Desi
 | Module | Schematic |
 |---|---|
 | `uart_tx` | ![Tx Module Schematic](docs/schematics/uart_tx_schematic.png) |
-| `uart_rx` | [![Rx Module Schematic](docs/schematics/uart_rx_schematic.png) |
-| `UART_top` | [![Top Module Schematic](docs/schematics/uart_top_schematic.png) |
+| `uart_rx` | ![Rx Module Schematic](docs/schematics/uart_rx_schematic.png) |
+| `UART_top` | ![Top Module Schematic](docs/schematics/uart_top_schematic.png) |
 
 
 ---
