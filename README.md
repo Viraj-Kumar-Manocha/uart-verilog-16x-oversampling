@@ -81,9 +81,11 @@ uart-verilog/
 ├── results/
 │   ├── simulation_result.png                   # Result of 10000 transmissions simulation
 │   ├── loopback_waveform.png                   # waveform of transmission of bits
-│   ├── uart_tx.png                             # waveform of tx module when transmission happens  
-│   ├── uart_rx.png                             # waveform of rx module when it recieves data
-│   └── loopback_waveform_2.png
+│   ├── loopback_waveform_2.png
+│   ├── loopback_waveform_3.png
+│   ├── uart_tx_waveform.png                    # waveform of tx module when transmission happens  
+│   └── uart_rx_waveform.png                    # waveform of rx module when it recieves data
+│   
 │
 ├── LICENSE
 │
