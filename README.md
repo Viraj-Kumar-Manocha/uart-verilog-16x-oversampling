@@ -22,7 +22,6 @@ The design was verified with a self-checking testbench running 10,000 randomized
 - 📡 **16x oversampling** — tick generated at 16x the target baud rate for precise bit timing
 - 🎯 **Mid-bit sampling on RX** — each bit is sampled near its center for robustness against jitter/noise
 - 🧩 **FSM-based TX and RX** — both modules follow an `IDLE → START → DATA → STOP` state machine
-- 🚫 **No parity bit** — simple 8-N-1 style framing
 - 🧪 **Self-checking testbench** — 10,000 randomized cases via `repeat`, auto-reports pass percentage
 - 🏗️ **Synthesizable top module** — `UART_top.v` integrates TX + RX + baud generator for real hardware
 - ⏱️ **Timing-closed on Vivado** — constrained with `timing_UART.xdc`, ~283 MHz Fmax
@@ -72,12 +71,22 @@ uart-verilog/
 │   └── timing_UART.xdc                # Vivado timing constraints
 │
 ├── docs/
+│   ├── uart_timing.png                         # Worst negative slack at 10ns clock period
 │   └── schematics/
-│       ├── uart_tx_schematic.png      # uart_tx elaborated schematic
-│       ├── uart_rx_schematic.png      # uart_rx elaborated schematic
-│       └── uart_top_schematic.png     # UART_top elaborated schematic
+│       ├── uart_tx_schematic.png               # uart_tx elaborated schematic
+│       ├── uart_rx_schematic.png               # uart_rx elaborated schematic
+│       ├── uart_top_schematic.png              # UART_top elaborated schematic
+│       └── uart_baud_rate_gen_schematic.png    # uart 16x baud rate generator schematic
+│
+├── results/
+│   ├── simulation_result.png                   # Result of 10000 transmissions simulation
+│   ├── loopback_waveform.png                   # waveform of transmission of bits
+│   ├── uart_tx.png                             # waveform of tx module when transmission happens  
+│   ├── uart_rx.png                             # waveform of rx module when it recieves data
+│   └── loopback_waveform_2.png
 │
 ├── LICENSE
+│
 └── README.md
 ```
 
@@ -110,9 +119,9 @@ FSM: `IDLE → START → DATA → STOP`
 stateDiagram-v2
     [*] --> IDLE
     IDLE --> START: tx_start asserted
-    START --> DATA: start bit sent (tx = 0)
+    START --> DATA: start bit sent (tx = 0)(busy=1)
     DATA --> STOP: 8 bits shifted out
-    STOP --> IDLE: stop bit sent (tx = 1)
+    STOP --> IDLE: stop bit sent (tx = 1)(busy=0)
 ```
 
 | Signal | Direction | Description |
@@ -183,10 +192,9 @@ The design was synthesized using **Xilinx Vivado**, with `UART_top.v` as the top
 
 Fmax is derived from the Worst Negative Slack (WNS) reported by Vivado's timing analysis:
 
-Achievable Clock Period = Target Clock Period − WNS
-Fmax = 1 / Achievable Clock Period
+Achievable Clock Period = Target Clock Period − WNS = 10ns - 6.468 ns = 3.532 ns
 
-WNS = +3.532 ns → Achievable Period ≈ 3.532 ns → Fmax ≈ 283 MHz
+Fmax = 1 / Achievable Clock Period ≈ 283 MHz
 
 ---
 
@@ -212,8 +220,8 @@ Elaborated schematics generated in Vivado (RTL Analysis → Open Elaborated Desi
 
 1. Clone the repository:
 ```
-git clone https://github.com/<your-username>/uart-verilog.git
-cd uart-verilog
+git clone https://github.com/Viraj-Kumar-Manocha/uart-verilog-16x-oversampling.git
+cd uart-verilog-16x-oversampling
 ```
 2. Open Vivado and create a new project, adding all files from `rtl/` as design sources.
 3. Add the desired testbench from `tb/` as a simulation source.
@@ -244,6 +252,9 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ## 🙋 Author
 
-**[Your Name]**
+**Viraj Kumar Manocha**
+**B.Tech Electrical Engineering, IIT Ropar**
+
+Feel free to connect or reach out for questions/collaboration! [LinkedIn](https://www.linkedin.com/in/viraj-kumar-818aa0321)
 
 Feel free to connect or reach out for questions/collaboration! [LinkedIn](https://www.linkedin.com/in/yourprofile/)
