@@ -256,5 +256,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 **B.Tech Electrical Engineering, IIT Ropar**
 
 Feel free to connect or reach out for questions/collaboration! [LinkedIn](https://www.linkedin.com/in/viraj-kumar-818aa0321)
-
-Feel free to connect or reach out for questions/collaboration! [LinkedIn](https://www.linkedin.com/in/yourprofile/)
