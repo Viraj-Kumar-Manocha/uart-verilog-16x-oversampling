@@ -62,7 +62,7 @@ uart-verilog/
 │   └── UART_top.v                     # Top-level module (synthesis target)
 │
 ├── tb/                                # Verification files
-│   ├── testbench_UART_transmitter.v   # TX-only unit test
+│   ├── testbench_uart_transmitter.v   # TX-only unit test
 │   ├── testbench_uart_rx.v            # RX-only unit test
 │   ├── tx_rx_loopback_testbench.v     # TX -> RX loopback demo
 │   └── testbench_uart_2.v             # Self-checking loopback test (10,000 cases)
